@@ -1,36 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Todo Page</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f1f1f1;
-    }
-
-    .container {
-      max-width: 400px;
-      margin: 0 auto;
-      padding: 20px;
-      background-color: #ffffff;
-      border-radius: 5px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      text-align: center;
-    }
-
-    .container h2 {
-      color: #ff0000;
-    }
-
-    .container p {
-      color: #555555;
-    }
-  </style>
+	<link href="webjars/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+  	<title>My To-do Page</title>
 </head>
 <body>
   <div class="container">
@@ -58,5 +31,7 @@
     	</tbody>
     </table>
   </div>
+  <script src="webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+  <script src="webjars/jquery/3.6.0/jquery.min.js"></script>
 </body>
 </html>
