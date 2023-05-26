@@ -47,12 +47,12 @@
     	</thead>
     	<tbody>
     		<c:forEach items="${todos}" var="todo">
-    		<tr>
-    			<td>${todo.id}</td>
-	    		<td>${todo.description}</td>
-	    		<td>${todo.targetdate}</td>
-	    		<td>${todo.done}</td>
-    		</tr>
+	    		<tr>
+	    			<td>${todo.id}</td>
+		    		<td>${todo.description}</td>
+		    		<td>${todo.targetdate}</td>
+		    		<td>${todo.done}</td>
+	    		</tr>
     		</c:forEach>
     	</tbody>
     </table>
