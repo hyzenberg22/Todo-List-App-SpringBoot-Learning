@@ -35,7 +35,8 @@
 <body>
   <div class="container">
     <h2>Welcome to the to do page ${name}</h2>
-    <div>Your Todo's are ${todos} </div>
+    <hr>
+    <h1>Your Todo's </h1>
     <table>
     	<thead>
     		<tr>
