@@ -7,10 +7,8 @@
 </head>
 <body>
   <div class="container">
-    <h2>Welcome to the to do page ${name}</h2>
-    <hr>
     <h1>Your Todo's </h1>
-    <table>
+    <table class="table">
     	<thead>
     		<tr>
     			<th>id</th>

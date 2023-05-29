@@ -7,7 +7,7 @@
 <body>
 	<div class="container">
 		
-		<h2>Login</h2>
+		<h1>Login</h1>
 		<pre>${errorMessage}</pre>
 		<form method="post">
 			<label for="username">Name:</label> 
