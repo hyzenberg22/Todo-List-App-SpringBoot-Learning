@@ -16,56 +16,55 @@ import jakarta.validation.Valid;
 @Controller
 @SessionAttributes("name")
 public class TodoController {
-	//list-todos
-	
-	//todo services
-	
+	// list-todos
+
+	// todo services
+
 	public TodoController(TodoService todoService) {
 		super();
 		this.todoService = todoService;
 	}
+
 	private TodoService todoService;
-	
-	
-	//This is to show the list of the todos
+
+	// This is to show the list of the todos
 	@RequestMapping("list-todos")
 	public String listAllTodos(ModelMap map) {
 		List<Todo> todos = todoService.findByUsername("in28minutes");
 		map.addAttribute("todos", todos);
 		return "listTodos";
 	}
-	
-	
-	//This is the get method to fetch the to do list
-	@RequestMapping(value="add-Todo", method = RequestMethod.GET)
+
+	// This is the get method to fetch the to do list
+	@RequestMapping(value = "add-Todo", method = RequestMethod.GET)
 	public String showNewTodoPage(ModelMap model) {
-		String username = (String)model.get("name");
-		Todo todo = new Todo(0, username, "" ,LocalDate.now().plusYears(1), false);
+		String username = (String) model.get("name");
+		Todo todo = new Todo(0, username, "", LocalDate.now().plusYears(1), false);
 		model.put("todo", todo);
 		return "todo";
-		
+
 	}
-	//This is the for the post methode after adding the to do inthe list 
-	@RequestMapping(value="add-Todo", method = RequestMethod.POST)
+
+	// This is the for the post methode after adding the to do inthe list
+	@RequestMapping(value = "add-Todo", method = RequestMethod.POST)
 	public String addNewPage(ModelMap map, @Valid Todo todo, BindingResult result) {
-		if(result.hasErrors()) {
+		if (result.hasErrors()) {
 			return "todo";
 		}
-		
-		String username = (String)map.get("name");
+
+		String username = (String) map.get("name");
 		todoService.addTodo(username, todo.getDescription(), LocalDate.now().plusYears(1), false);
 		return "redirect:list-todos";
 	}
-	
-	//delete Todo
+
+	// delete Todo
 	@RequestMapping("delete-todo")
 	public String deleteTodo(@RequestParam int id) {
 		todoService.deleteById(id);
 		return "redirect:list-todos";
 	}
-	
-	
-	//Update Todo
+
+	// Update Todo
 	@RequestMapping("update-todo")
 	public String showUpdateTodoPage(@RequestParam int id, ModelMap model) {
 		Todo todo = todoService.findById(id);
