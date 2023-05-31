@@ -3,10 +3,11 @@ package com.in28minutes.springboot.Myfirstapplication.Todo;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.springframework.stereotype.Service;
 
-
+//todoservice where all the logic of the package is written
 //make a to do static objects
 @Service
 public class TodoService {
@@ -26,5 +27,12 @@ public class TodoService {
 	public void addTodo(String username, String description , LocalDate targetdate, boolean done) {
 		Todo todo = new Todo(++todosCount, username, description, targetdate, done);
 		todos.add(todo);
+	}
+	
+	//add the delete logic 
+	public void deleteById(int id) {
+		//if todo.getId==id then we remove the todo by prediacate lambda function 
+		Predicate<? super Todo> predicate = todo->todo.getId()==id;
+		todos.removeIf(predicate);
 	}
 }

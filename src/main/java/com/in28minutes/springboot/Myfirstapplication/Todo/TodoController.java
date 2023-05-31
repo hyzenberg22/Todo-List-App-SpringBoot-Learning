@@ -8,6 +8,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import jakarta.validation.Valid;
@@ -25,6 +26,8 @@ public class TodoController {
 	}
 	private TodoService todoService;
 	
+	
+	//This is to show the list of the todos
 	@RequestMapping("list-todos")
 	public String listAllTodos(ModelMap map) {
 		List<Todo> todos = todoService.findByUsername("in28minutes");
@@ -33,6 +36,7 @@ public class TodoController {
 	}
 	
 	
+	//This is the get method to fetch the to do list
 	@RequestMapping(value="add-Todo", method = RequestMethod.GET)
 	public String showNewTodoPage(ModelMap model) {
 		String username = (String)model.get("name");
@@ -41,8 +45,7 @@ public class TodoController {
 		return "todo";
 		
 	}
-	
-	
+	//This is the for the post methode after adding the to do inthe list 
 	@RequestMapping(value="add-Todo", method = RequestMethod.POST)
 	public String addNewPage(ModelMap map, @Valid Todo todo, BindingResult result) {
 		if(result.hasErrors()) {
@@ -51,6 +54,13 @@ public class TodoController {
 		
 		String username = (String)map.get("name");
 		todoService.addTodo(username, todo.getDescription(), LocalDate.now().plusYears(1), false);
+		return "redirect:list-todos";
+	}
+	
+	//delete Todo
+	@RequestMapping("delete-todo")
+	public String deleteTodo(@RequestParam int id) {
+		todoService.deleteById(id);
 		return "redirect:list-todos";
 	}
 }
