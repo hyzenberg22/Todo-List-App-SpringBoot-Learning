@@ -80,6 +80,7 @@ public class TodoController {
 		}
 
 		String username = (String)map.get("name");
+		todo.setUsernameString(username);
 		todoService.updateTodo(todo);
 		return "redirect:list-todos";
 	}
