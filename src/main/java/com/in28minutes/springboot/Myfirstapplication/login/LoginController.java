@@ -16,32 +16,33 @@ public class LoginController {
 	// Login Controller
 
 	// authentication of the name and pass word and using a constructor injection
-	private AuthenticationService authenticationService;
-
-	public LoginController(AuthenticationService authenticationService) {
-		super();
-		this.authenticationService = authenticationService;
-	}
+//	private AuthenticationService authenticationService;
+//
+//	public LoginController(AuthenticationService authenticationService) {
+//		super();
+//		this.authenticationService = authenticationService;
+//	}
 
 	// Get method when someone hit the url
-	@RequestMapping(value = "user-login", method = RequestMethod.GET)
-	public String gotoLoginpage() {
-		return "userLogin";
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String gotoWelcomepage(ModelMap model) {
+		model.put("name", "in28minutes");
+		return "welcome";
 	}
 
 	// Post method when someone actually submit the form
 	// now we have a name and password as a form data we have to show it on welcome
 	// page
 	// using the requestpram and modelmap & model view controller pattern
-	@RequestMapping(value = "user-login", method = RequestMethod.POST)
-	public String gotoWelcomepage(@RequestParam String username,
-			@RequestParam String password, ModelMap map) {
-		if (authenticationService.authenticate(username, password)) {
-			map.put("name", username);
-			map.put("password", password);
-			return "welcome";
-		}
-		map.put("errorMessage", "Invalid Crediancials Please try again..!");
-		return "userLogin";
-	}
+//	@RequestMapping(value = "user-login", method = RequestMethod.POST)
+//	public String gotoWelcomepage(@RequestParam String username,
+//			@RequestParam String password, ModelMap map) {
+//		if (authenticationService.authenticate(username, password)) {
+//			map.put("name", username);
+//			map.put("password", password);
+//			return "welcome";
+//		}
+//		map.put("errorMessage", "Invalid Crediancials Please try again..!");
+//		return "userLogin";
+//	}
 }
