@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
 @SessionAttributes("name") // all attributes in the name are available in the model
-public class LoginController {
+public class WelcomeController {
 	// Login Controller
 
 	// authentication of the name and pass word and using a constructor injection
